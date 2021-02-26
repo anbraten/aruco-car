@@ -38,11 +38,6 @@
 #define MOTOR_FORWARDS 0
 #define MOTOR_BACKWARDS 1
 
-#ifdef ENABLE_CMD
-  WiFiServer cmdServer(1337);
-  TaskHandle_t tCmdServer;
-#endif
-
 #ifdef ENABLE_CAM
 TaskHandle_t tCamServer;
 
@@ -211,6 +206,9 @@ void setupOTA() {
 #endif
 
 #ifdef ENABLE_CMD
+WiFiServer cmdServer(1337);
+TaskHandle_t tCmdServer;
+
 void setMotor(int side, int speed) {
   int motorPin1 = (side == MOTOR_LEFT) ? MOTOR_LEFT_PIN_1 : MOTOR_RIGHT_PIN_1;
   int motorPin2 = (side == MOTOR_LEFT) ? MOTOR_LEFT_PIN_2 : MOTOR_RIGHT_PIN_2;
