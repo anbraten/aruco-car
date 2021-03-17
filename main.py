@@ -71,10 +71,10 @@ def steer(tvec):
   base_speed = 45 # min(80, distance + 20)
 
   if steering_with_distance > 100:
-    steering_with_distance = 100
+    steering_with_distance = 99
 
   if steering_with_distance < -100:
-    steering_with_distance = -100
+    steering_with_distance = -99
 
   # break if closer than 20cm to the cube
   if distance <= 20:
